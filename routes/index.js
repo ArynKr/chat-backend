@@ -5,5 +5,6 @@ const LikedVideos = require('./likedVideos.route');
 const SavedVideos = require('./savedVideos.route');
 const Playlist = require('./playlist.route');
 const Notes = require('./notes.route');
+const Chat = require('./chat.route')
 
-module.exports = { User, Video, History, LikedVideos, SavedVideos, Playlist, Notes }
+module.exports = { User, Video, History, LikedVideos, SavedVideos, Playlist, Notes, Chat }

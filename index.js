@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const { User, Video, History, LikedVideos, SavedVideos, Playlist, Notes } = require('./routes/index')
+const { User, Video, History, LikedVideos, SavedVideos, Playlist, Notes, Chat } = require('./routes/index')
 const { appConnection } = require('./utils/appConnection')
 
 const app = express();
@@ -10,11 +10,14 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send("Welcome to the server of Learn It - Video Library App.")
+  res.json({ message: "Hello from revirt-chat powered by streamIO" })
 });
+
+app.use('/chat', Chat);
 
 app.use('/user', User);
 
+/*
 app.use('/video', Video);
 
 app.use('/history', History);
@@ -26,9 +29,11 @@ app.use('/savedVideos', SavedVideos);
 app.use('/playlist', Playlist);
 
 app.use('/notes', Notes);
+*/
 
 app.use('*', (req, res) => {
-    res.status(404).send("Error 404 - Page not found.")
+  res.status(404).send("Error 404 - Page not found.")
 });
 
 app.listen(PORT, () => appConnection(PORT));
+const mySecret = process.env['PORT']
